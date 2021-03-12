@@ -57,8 +57,10 @@ undum.game.situations = {
     }),
 
     desayuno: new undum.SimpleSituation(
-        "<div class='transient'>\
+        "<div>\
         <p>Muy bien, has decidido empezar el día desayunando, para ello podrás elegir entre diferentes alimentos, recuerda que no todo es saludable y algunas cosas te podrás bajar la energía:\
+        <img src='media/img/desayuno.jpg'/>\
+        <br>\
         <ul class='options'>\
         <li> <p> <a href='./cola_cao' class='once'>Cola cao </a> </p> </li>\
         <li> <p> <a href='./fruta' class='once'>Pieza de fruta </a> </p> </li>\
@@ -66,7 +68,6 @@ undum.game.situations = {
         <li> <p> <a href='./redbull' class='once'>Tomar un RedBull </a> </p> </li>\
         <li> <p> <a href='./pizza' class='once'>Pizza</a> </p> </li>\
         </ul>\
-		<img src='media/img/desayuno.jpg'/>\
         <p>Una vez que hayas terminado tu elección de desayuno podrás volver a continuar tu historia, <a href='hub'>pincha aquí para volver</a></p>\
         </div>"
         ,
@@ -107,14 +108,15 @@ undum.game.situations = {
         }
     ),
     salir: new undum.SimpleSituation(
-        "<div class='transient'>\
-        <p>De acuerdo, ahora vamos a preparanos para salir de casa, para ello vamos a ver que cosas podemos coger para ir preparados:\
+        "<div>\
+        <p>De acuerdo, ahora vamos a preparanos para salir de casa, para ello vamos a ver que cosas podemos coger para ir preparados:</p>\
         <br>\
-        En el salón nos encontramos <a href='./_llaves' class='once'>unas llaves de coche </a>y  un precioso <a href='./_paraguas' class='once'> paraguas </a>.\
+        <p>En el salón nos encontramos <a href='./_llaves' class='once'>unas llaves de coche </a>y  un precioso <a href='./_paraguas' class='once'> paraguas </a>.</p>\
         <br>\
-        Por otro lado, en tu dormitorio encontramos <a href='./_mascarilla' class='once'> mascarilla </a> para protegernos del COVID, <a href='./_movil' class='once'>tu teléfono móvil </a> y debajo de tu\
-        cama encontramos la <a href='./_cartera' class='once'> cartera </a>, sabiendo que es importante llevar el dinero para comprar las cosas.\
-		<img src='media/img/desayuno.jpg'/>\
+        <p>Por otro lado, en tu dormitorio encontramos <a href='./_mascarilla' class='once'> mascarilla </a> para protegernos del COVID, <a href='./_movil' class='once'>tu teléfono móvil </a> y debajo de tu\
+        cama encontramos la <a href='./_cartera' class='once'> cartera </a>, sabiendo que es importante llevar el dinero para comprar las cosas.</p>\
+        <br>\
+		<img src='media/img/salir.jpg'/>\
         <p>Una vez que hayas terminado tu elección objetos a llevar podrás dirigirte al supermercado, <a href='./_salir'>pinchando aquí</a></p>\
         </div>"
         ,
@@ -162,11 +164,11 @@ undum.game.situations = {
     ),
     super: new undum.SimpleSituation(
 
-        "<p>Una vez que estás en el supermercado deberás elegir que cosas compras.</p>\
-        <p>Para saber que tienes que compras deberás ver la <a href=./lista class='once'> lista de la compra. </a></p>\
-		<img src='mercadona.jpg' class='float_right'>\
+        "<p>Una vez que has llegado al supermercado deberás elegir cuál será la comida que vas a comprar.</p>\
+        <p>Para saber que tienes que comprar deberás ver la <a href=./lista class='once'> lista de la compra. </a></p>\
+		<img src='media/img/mercadona.jpg'>\
         <br>\
-        <p>Como se puede apreciar en el supermercado hay varias cosas a elegir para comer, pero nosotros solo podremos elegir una cosa</p>\
+        <p>Como se puede apreciar en el supermercado hay varias cosas a elegir para comer, por tanto elige la que tienes apuntada en la lista o juegatela</p>\
         <ul class='options'>\
         <li> <p> <a href='./pizza'>Pizza refrigerada </a> </p> </li>\
         <li> <p> <a href='./tortilla'>Tortilla de patatas </a> </p> </li>\
@@ -242,9 +244,9 @@ undum.game.situations = {
 
                 },
                 'continuar': function (character, system, action) {
-                    if(!character.qualities.pizza && !character.qualities.ensaladilla && !character.qualities.lasana && !character.qualities.tortilla && !character.qualities.fideos){
+                    if (!character.qualities.pizza && !character.qualities.ensaladilla && !character.qualities.lasana && !character.qualities.tortilla && !character.qualities.fideos) {
                         system.setCharacterText("<p>Debes elegir algo, sino para que hemos venido al MERCADONA</p>");
-                    }else{
+                    } else {
                         //Nos dirigimos a la última situación
                         system.doLink("regreso");
                     }
@@ -252,14 +254,33 @@ undum.game.situations = {
 
             },
             exit: function (character, system, to) {
-
+                if (character.qualities.lasana) {
+                    system.setCharacterText("<p>Bien has cumplido tu objetivo y has comprado la lasaña</p>");
+                } else {
+                    //Nos dirigimos a la última situación
+                    system.setCharacterText("<p>Por lo visto lo que tenias que comprar era una lasaña pero tienes tanta hambre que ya te da igual</p>");
+                }
             }
         }
 
     ),
 
     regreso: new undum.SimpleSituation(
-        
+        "<p>Ya hemos regresado a casa, con nuestra compra por tanto ya hemos conseguido nuestro objetivo.</p>\
+        ahora nos pondremos a preparar la comida y seguiremos estudiando y preparando las "
+        ,
+        {
+            tags: ["topic"],
+            diplayOrder: 2,
+            heading: "Regreso a Casa",
+            actions: {
+
+            },
+            exit: function (character, system, to) {
+
+            }
+        }
+
     ),
     progress: new undum.SimpleSituation(
         "<p>Sometimes you want to make the change in a quality into a more\
