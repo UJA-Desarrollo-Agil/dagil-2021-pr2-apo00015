@@ -3,7 +3,6 @@
    * [URL del tablero Trello](#url-del-tablero-trello)
    * [Capturas de pantalla en Trello](#capturas-de-pantalla-en-trello)
    * [Capturas de pantalla en la aplicación Telegram](#capturas-de-pantalla-en-la-aplicación-telegram)
-   * 
 El juego tiene las siguientes situaciones:
 * **Start**: Es donde empieza el juego, es una pequeña introducción del día de hoy
 * **Desayuno**: Es la situación en la que decides tomarte un desayuno y obtener energía.
