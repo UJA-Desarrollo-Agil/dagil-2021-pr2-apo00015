@@ -31,7 +31,7 @@ undum.game.situations = {
     start: new undum.SimpleSituation(
         "<h1>Un nuevo dia</h1>\
         <img src='media/games/tutorial/casa.jpg' class='float_right'>\
-        <p>Muy buenos días, futuro ingeniero informático, como puedes ver ya ha comenazado un nuevo día\
+        <p>Muy buenos días, futuro ingeniero informático, como puedes ver ya ha comenazado un precioso y soleado nuevo día\
         el cuál será mas increible que ayer pero menos que mañana. </p>\
         \
         <p>Lo primero de todo será levantarse con gran energía y prepararse para comenzar este magnífico día</p>\
@@ -79,7 +79,7 @@ undum.game.situations = {
                 'cola_cao': function (character, system, action) {
 
                     system.setQuality("energia", character.qualities.energia + 10);
-                    system.setCharacterText("<p>Buena elección, un colacao siempres sienta bien</p>");
+                    system.setCharacterText("<p>Buena elección, un colacao siempre sienta bien</p>");
                 },
                 'tostadas': function (character, system, action) {
 
